@@ -1,10 +1,12 @@
+
+from kivymd.icon_definitions import md_icons
 from kivy.core.window import Window
 from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.label import MDLabel
 from kivymd.uix.textfield import MDTextField
-from kivymd.uix.button import MDRectangleFlatButton
+from kivymd.uix.button import MDRaisedButton
 from kivymd.uix.card import MDCard
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
@@ -84,13 +86,13 @@ class HipotecaInversaApp(MDApp):
             pos_hint={"center_x": 0.5}
         )
 
-        boton_calcular = MDRectangleFlatButton(
+        boton_calcular = MDRaisedButton(
             text="Calcular",
             on_release=self.calcular,
             size_hint=(1, 1)
         )
 
-        boton_limpiar = MDRectangleFlatButton(
+        boton_limpiar = MDFlatButton(
             text="Limpiar",
             on_release=self.limpiar,
             size_hint=(1, 1)

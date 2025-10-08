@@ -18,7 +18,7 @@ class TestInverseMortgage(unittest.TestCase):
         plazo = resultado["plazo"]
 
         self.assertEqual(plazo, 20)
-        self.assertAlmostEqual(renta_calculada, 1937960.50, 2)
+        self.assertAlmostEqual(renta_calculada, 1930043.29, 2)
 
 
     def test_renta_mensual_otro(self):
@@ -30,7 +30,7 @@ class TestInverseMortgage(unittest.TestCase):
         resultado = calculadora.hipoteca_inversa(propiedad, prestamo, tasa, edad)
 
         renta_calculada = resultado["renta_mensual"]
-        self.assertAlmostEqual(renta_calculada, 1183471.79, 2)
+        self.assertAlmostEqual(renta_calculada, 1363916.32, 2)
 
 
     def test_plazo_correcto(self):

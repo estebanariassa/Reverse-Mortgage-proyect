@@ -1,69 +1,96 @@
-# Calculadora de hipoteca inversa
+# Calculadora de Hipoteca Inversa
 
+Este proyecto simula una **hipoteca inversa**, un producto financiero en el cual un banco entrega al propietario una renta mensual basada en el valor de su vivienda, sin necesidad de pagar cuotas durante el plazo del contrato.
 
-## Descripcion del proyecto
--El banco entrega al propietario una renta mensual basada en el valor de su vivienda.<br>
--El propietario no paga cuotas durante el contrato.<br>
--Al fallecimiento del titular o al finalizar el plazo, la deuda se liquida con la venta de la propiedad o con recursos de los herederos.<br>
-## Entradas
--Valor de la propiedad (COP): precio de la vivienda.<br>
--Porcentaje del préstamo: puede ser de 0% hasta 100% del valor de la propiedad.<br>
--Tasa de interés anual (%): entre 9% y 12%.<br>
--Edad del propietario (años): debe estar entre 65 y 90 años.<br>
--El plazo se calcula automáticamente como 90 - edad (años restantes hasta los 90).<br>
--El plazo mínimo permitido es de 5 años.<br>
+---
 
-## Salidas
--Renta mensual (COP): el monto que recibe el propietario cada mes.<br>
--Plazo del contrato (años): definido según la edad.<br>
--Monto total del préstamo (COP): valor máximo prestado sobre la vivienda.<br>
--Deuda final acumulada (COP): total que debe liquidarse al final del contrato.<br>
--Opciones para herederos:
-1) Vender la vivienda y pagar la deuda.<br>
-2) Pagar la deuda con otros recursos.<br>
-3) Entregar la vivienda al banco.<br>
-Recomendación del sistema: sugiere si conviene vender la propiedad o entregarla al banco, comparando el valor de la deuda con el valor de la vivienda.
+## Descripción del Proyecto
 
-## Autores
--Esteban Arias Salazar<br>
--Nicol Valeria Atehortua<br>
+- El banco entrega al propietario una **renta mensual** basada en el valor de su vivienda.
+- El propietario **no paga cuotas mensuales** durante el contrato.
+- Al fallecimiento del titular o al finalizar el plazo, la **deuda se liquida** con la venta de la propiedad o con recursos de los herederos.
 
-## instrucciones de uso 
--Clonar el repositorio: https://github.com/estebanariassa/Reverse-Mortgage-proyect.git
--Entrar al proyecto: reverse mortgage
--Ejecutar el programa: python main.py
--Ejecutar pruebas unitarias: python -m unittest discover
-## Cómo ejecutar la aplicación en consola
+---
 
+## Entregas del Proyecto
 
+### Entrega 1 y 2:
 
-1. Abre la terminal en Visual Studio Code.
-2. Navega a la carpeta raíz del proyecto:
-   ```
-   cd "Reverse_mortgage_calculator\Reverse-Mortgage-proyect"
-   ```
-3. Ejecuta el archivo principal de la interfaz:
-   ```
-   python src/view/interfaz.py
-   ```
-4. Ingresa los datos solicitados en la consola para simular la hipoteca inversa.
+**Autores:**
+- Esteban Arias Salazar y Nicol Valeria Atehortua
 
-Esto iniciará la interfaz de consola y podrás realizar simulaciones directamente desde la
+**Contribuciones:**
+- Implementación del modelo base de la hipoteca inversa.
+- Lógica de cálculo financiero.
+- Pruebas unitarias iniciales.
+- Mejoras en la lógica del sistema.
+- Validación de entradas.
+- Optimización del cálculo de la renta mensual y deuda final.
 
-## Cómo ejecutar los tests
+---
 
-1. Abre la terminal ya sea en Visual Studio Code o usando cmd.
-2. Navega a la carpeta del proyecto(Por Ejemplo):
-   ```
-   cmd
-   cd "Reverse_mortgage_calculator\Reverse-Mortgage-proyect"
-   ```
-3. Ejecuta el archivo de test con unittest:
-   ```
-   cmd
-   py test/test_inverse_mortgage.py
-   ```
+### Entrega 3:
 
-Esto ejecutará todas las pruebas y mostrará los resultados
-   
-   
+**Autores:**
+- Juan Manuel y Mateo Molina Gonzalez
+
+**Contribuciones:**
+- Desarrollo de una interfaz gráfica con **Kivy**.
+- Instrucciones detalladas para clonar, ejecutar el proyecto y correr las pruebas.
+- Mejora en la presentación de resultados.
+- Refactorización de código para facilitar el uso y pruebas.
+
+---
+
+## Campos de Entrada
+
+| Campo                     | Descripción                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| Valor de la propiedad    | Precio de la vivienda (en COP)                                              |
+| Porcentaje del préstamo  | Porcentaje del valor de la vivienda a prestar (0% - 100%)                   |
+| Tasa de interés anual    | Entre 9% y 12%                                                              |
+| Edad del propietario     | Entre 65 y 90 años                                                          |
+| Plazo del contrato       | Calculado automáticamente como `90 - edad` (mínimo 5 años)                 |
+
+---
+
+## Salidas Generadas
+
+| Campo                         | Descripción                                                                 |
+|------------------------------|-----------------------------------------------------------------------------|
+| Renta mensual (COP)          | Monto que recibe el propietario cada mes                                   |
+| Plazo del contrato (años)    | Definido según la edad del propietario                                      |
+| Monto total del préstamo     | Valor máximo prestado sobre la vivienda                                     |
+| Deuda final acumulada (COP)  | Total que debe liquidarse al final del contrato                             |
+| Recomendación del sistema    | Sugerencia entre vender o entregar la vivienda al banco                     |
+| Opciones para herederos      | 1) Vender la vivienda  2) Pagar la deuda  3) Entregar la vivienda al banco  |
+
+---
+
+## Instrucciones para Clonar y Ejecutar
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/estebanariassa/Reverse-Mortgage-proyect.git
+```
+
+### 2. Navegar al directorio del proyecto
+
+```bash
+cd Reverse-Mortgage-proyect
+```
+
+### 4. Ejecutar las pruebas unitarias
+
+```bash
+py test/test_inverse_mortgage.py
+```
+
+### 5. Ejecutar la interfaz gráfica (Kivy)
+
+```bash
+pip install kivymd
+```
+
+Esto abrirá la aplicación con la interfaz gráfica desarrollada en Kivy. Desde allí podrás ingresar los datos y simular la hipoteca inversa visualmente.

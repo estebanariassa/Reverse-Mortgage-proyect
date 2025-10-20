@@ -1,4 +1,10 @@
 import psycopg2
+import sys
+import os
+
+# Agregar el directorio raíz al path para importar Secret_config
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+from Secret_config import PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT
 from model.heredero import Heredero
 
 class HerederosController:
@@ -9,10 +15,11 @@ class HerederosController:
         Ajusta las credenciales según tu entorno.
         """
         return psycopg2.connect(
-            host="localhost",
-            database="ejemplo-db",
-            user="postgres",
-            password="tu_contraseña"
+            host=PGHOST,
+            database=PGDATABASE,
+            user=PGUSER,
+            password=PGPASSWORD,
+            port=PGPORT
         )
 
     # -----------------------------------------------------------

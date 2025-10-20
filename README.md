@@ -1,6 +1,125 @@
-# Calculadora de Hipoteca Inversa
+# Sistema de Hipoteca Inversa
 
-Este proyecto simula una **hipoteca inversa**, un producto financiero en el cual un banco entrega al propietario una renta mensual basada en el valor de su vivienda, sin necesidad de pagar cuotas durante el plazo del contrato.
+Un sistema desarrollado para calcular y gestionar hipotecas inversas. Permite a los usuarios simular diferentes escenarios y administrar la información de clientes, propiedades e hipotecas.
+
+## Instrucciones de Instalación y Uso
+
+### Requisitos Previos
+- Python 3.8 o superior
+- PostgreSQL 12 o superior
+- pip (gestor de paquetes de Python)
+
+### Pasos para Instalar
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/estebanariassa/Reverse-Mortgage-proyect.git
+   cd Reverse-Mortgage-proyect
+   ```
+
+2. **Instalar dependencias:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configurar la base de datos PostgreSQL:**
+
+   **Opción A: Base de datos local**
+   - Instalar PostgreSQL en tu sistema
+   - Crear una base de datos llamada `calculadora_de_hipoteca_inversa`
+   - Configurar el archivo `Secret_config.py` con tus credenciales locales
+
+   **Opción B: Base de datos en la nube (Render)**
+   - La base de datos ya está configurada en Render
+   - El archivo `Secret_config.py` ya contiene las credenciales necesarias
+
+4. **Crear las tablas de la base de datos:**
+   ```bash
+   # Opción 1: Script automático de configuración (Recomendado)
+   python setup_database.py
+   
+   # Opción 2: Ejecutar el script de creación de tablas
+   python -m test.fixtures
+   ```
+
+5. **Ejecutar la aplicación:**
+   ```bash
+   # Interfaz gráfica con Kivy (Calculadora de hipoteca inversa)
+   python src/view/interface.py
+   
+   # Interfaz de gestión de base de datos
+   python src/view/database_interface.py
+   
+   # O ejecutar desde main.py
+   python src/view/main.py
+   ```
+
+### Configuración del archivo Secret_config.py
+
+El archivo `Secret_config.py` contiene las credenciales de conexión a la base de datos. **IMPORTANTE:** Este archivo contiene información sensible y no debe ser compartido públicamente.
+
+**Estructura del archivo:**
+```python
+PGHOST='host_de_la_base_de_datos'
+PGDATABASE='nombre_de_la_base_de_datos'
+PGUSER='usuario_de_la_base_de_datos'
+PGPASSWORD='contraseña_de_la_base_de_datos'
+PGPORT=5432
+```
+
+**Para uso local:**
+- Reemplaza los valores con tus credenciales de PostgreSQL local
+- Asegúrate de que la base de datos `calculadora_de_hipoteca_inversa` exista
+
+**Para uso en producción:**
+- El archivo ya está configurado para la base de datos en Render
+- No modifiques estos valores a menos que tengas una nueva base de datos
+
+### Ejecución de Pruebas
+Para ejecutar las pruebas unitarias:
+```bash
+python -m unittest discover test
+```
+
+### Funcionalidades del Sistema
+
+#### 1. Calculadora de Hipoteca Inversa (`interface.py`)
+- Simulación de hipoteca inversa
+- Cálculo de renta mensual
+- Validación de parámetros de entrada
+- Interfaz gráfica intuitiva
+
+#### 2. Gestión de Base de Datos (`database_interface.py`)
+- **Gestión de Clientes**: Insertar, buscar y modificar datos de clientes
+- **Gestión de Propiedades**: Administrar información de propiedades
+- **Gestión de Hipotecas**: Controlar contratos de hipoteca inversa
+- **Gestión de Herederos**: Gestionar información de herederos
+- Interfaz gráfica completa con navegación entre módulos
+
+#### 3. Casos de Prueba
+- **Test Fixtures**: Creación automática de tablas
+- **Casos de Inserción**: 3 casos de prueba para cada entidad
+- **Casos de Modificación**: 3 casos de prueba para actualizar datos
+- **Casos de Búsqueda**: 3 casos de prueba para consultar información
+
+#### 4. Características Técnicas
+- **Interfaz Gráfica**: Desarrollada con Kivy
+- **Base de Datos**: PostgreSQL con operaciones CRUD
+- **Validaciones**: Sistema de validación de datos
+- **Pruebas**: Casos de prueba unitarios
+
+---
+
+## Estructura del Proyecto
+
+```
+src/
+├── model/              # Modelos de datos
+├── controller/         # Lógica de negocio
+├── view/              # Interfaces de usuario
+├── database/          # Gestión de BD
+└── utils/             # Utilidades
+```
 
 ---
 

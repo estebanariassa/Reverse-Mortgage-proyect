@@ -1,8 +1,5 @@
-class Clientess:
-    """
-    Clase que representa la tabla 'clientess' en la base de datos.
-    Guarda la información del propietario que solicita una hipoteca inversa.
-    """
+class Cliente:
+    """Clase que representa un cliente en el sistema"""
 
     def __init__(self, cedula, nombre, edad, direccion=None, telefono=None, correo=None, fecha_registro=None):
         self.cedula = cedula
@@ -14,12 +11,10 @@ class Clientess:
         self.fecha_registro = fecha_registro
 
     def __repr__(self):
-        return f"<Clientess {self.cedula} - {self.nombre}, {self.edad} años>"
+        return f"<Cliente {self.cedula} - {self.nombre}, {self.edad} años>"
 
     def to_dict(self):
-        """
-        Convierte el objeto en un diccionario (útil para serializar o mostrar en JSON).
-        """
+        """Convierte el objeto en un diccionario"""
         return {
             "cedula": self.cedula,
             "nombre": self.nombre,
@@ -32,11 +27,8 @@ class Clientess:
 
     @staticmethod
     def from_row(row):
-        """
-        Crea un objeto Clientess a partir de una fila devuelta por la base de datos.
-        Ejemplo de uso: cliente = Clientess.from_row(resultado[0])
-        """
-        return Clientess(
+        """Crea un objeto Cliente a partir de una fila de base de datos"""
+        return Cliente(
             cedula=row[0],
             nombre=row[1],
             edad=row[2],

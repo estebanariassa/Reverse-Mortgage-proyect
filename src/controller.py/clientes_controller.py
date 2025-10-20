@@ -1,12 +1,19 @@
 import psycopg2
+import sys
+import os
+
+# Agregar el directorio raíz al path para importar Secret_config
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+from Secret_config import PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT
 from model.clientes import Cliente
 
 
 DB_CONFIG = {
-    "host": "localhost",
-    "database": "tu_basedatos",
-    "user": "postgres",
-    "password": "tu_contraseña"
+    "host": PGHOST,
+    "database": PGDATABASE,
+    "user": PGUSER,
+    "password": PGPASSWORD,
+    "port": PGPORT
 }
 
 class ClientesController:
@@ -15,10 +22,6 @@ class ClientesController:
     def conectar():
         """Conecta a la base de datos PostgreSQL"""
         return psycopg2.connect(**DB_CONFIG)
-
-    # ---------------------------------------------------------
-    # CREAR / BORRAR TABLA
-    # ---------------------------------------------------------
 
     @staticmethod
     def crear_tabla():
@@ -48,10 +51,6 @@ class ClientesController:
         conexion.commit()
         conexion.close()
 
-    # ---------------------------------------------------------
-    # INSERTAR CLIENTE
-    # ---------------------------------------------------------
-
     @staticmethod
     def insertar(cliente: Cliente):
         """Inserta un cliente en la base de datos"""
@@ -75,10 +74,6 @@ class ClientesController:
             raise
         finally:
             conexion.close()
-
-    # ---------------------------------------------------------
-    # BUSCAR CLIENTE
-    # ---------------------------------------------------------
 
     @staticmethod
     def buscar(cedula):

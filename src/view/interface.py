@@ -1,5 +1,4 @@
 
-from kivymd.icon_definitions import md_icons
 from kivy.core.window import Window
 from kivymd.app import MDApp
 from kivymd.uix.screen import Screen

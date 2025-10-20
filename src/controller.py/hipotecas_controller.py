@@ -1,25 +1,27 @@
 import psycopg2
-from model.hipoteca import Hipoteca  
+import sys
+import os
 
-DB_CONFIG = {
-    "host": "localhost",
-    "database": "tu_basedatos",
-    "user": "postgres",
-    "password": "tu_contraseña"
-}
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+from Secret_config import PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT
+from model.hipoteca import Hipoteca  
 
 class HipotecasController:
 
     @staticmethod
     def conectar():
-        """Conecta a la base de datos PostgreSQL"""
-        return psycopg2.connect(**DB_CONFIG)
+        return psycopg2.connect(
+            host=PGHOST,
+            database=PGDATABASE,
+            user=PGUSER,
+            password=PGPASSWORD,
+            port=PGPORT
+        )
 
  
 
     @staticmethod
     def crear_tabla():
-        """Crea la tabla hipotecas si no existe"""
         conexion = HipotecasController.conectar()
         cursor = conexion.cursor()
         cursor.execute("""
@@ -41,20 +43,14 @@ class HipotecasController:
 
     @staticmethod
     def borrar_tabla():
-        """Elimina la tabla hipotecas"""
         conexion = HipotecasController.conectar()
         cursor = conexion.cursor()
         cursor.execute("DROP TABLE IF EXISTS hipotecas;")
         conexion.commit()
         conexion.close()
 
-    # ---------------------------------------------------------
-    # INSERTAR HIPOTECA
-    # ---------------------------------------------------------
-
     @staticmethod
     def insertar(hipoteca: Hipoteca):
-        """Inserta una hipoteca en la base de datos"""
         conexion = HipotecasController.conectar()
         cursor = conexion.cursor()
         try:

@@ -1,23 +1,23 @@
 import psycopg2
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+from Secret_config import PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT
 from model.propiedad import Propiedad
 
 class PropiedadesController:
     @staticmethod
     def conectar():
-        """
-        Establece la conexión con la base de datos PostgreSQL.
-        Ajusta los valores según tu configuración.
-        """
         return psycopg2.connect(
-            host="localhost",
-            database="ejemplo-db",
-            user="postgres",
-            password="tu_contraseña"
+            host=PGHOST,
+            database=PGDATABASE,
+            user=PGUSER,
+            password=PGPASSWORD,
+            port=PGPORT
         )
 
-    # -----------------------------------------------------------
-    # Crear o eliminar tabla
-    # -----------------------------------------------------------
+
 
     @staticmethod
     def crear_tabla():
@@ -44,9 +44,6 @@ class PropiedadesController:
         conexion.commit()
         conexion.close()
 
-    # -----------------------------------------------------------
-    # Operaciones CRUD
-    # -----------------------------------------------------------
 
     @staticmethod
     def insertar(propiedad: Propiedad):

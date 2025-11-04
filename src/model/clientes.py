@@ -1,6 +1,4 @@
 class Cliente:
-    """Clase que representa un cliente en el sistema"""
-
     def __init__(self, cedula, nombre, edad, direccion=None, telefono=None, correo=None, fecha_registro=None):
         self.cedula = cedula
         self.nombre = nombre
@@ -14,7 +12,6 @@ class Cliente:
         return f"<Cliente {self.cedula} - {self.nombre}, {self.edad} años>"
 
     def to_dict(self):
-        """Convierte el objeto en un diccionario"""
         return {
             "cedula": self.cedula,
             "nombre": self.nombre,
@@ -27,7 +24,6 @@ class Cliente:
 
     @staticmethod
     def from_row(row):
-        """Crea un objeto Cliente a partir de una fila de base de datos"""
         return Cliente(
             cedula=row[0],
             nombre=row[1],

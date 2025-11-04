@@ -2,7 +2,6 @@ import psycopg2
 import sys
 import os
 
-# Agregar el directorio raíz al path para importar Secret_config
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from Secret_config import PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT
 from model.heredero import Heredero
@@ -10,10 +9,6 @@ from model.heredero import Heredero
 class HerederosController:
     @staticmethod
     def conectar():
-        """
-        Establece conexión con la base de datos PostgreSQL.
-        Ajusta las credenciales según tu entorno.
-        """
         return psycopg2.connect(
             host=PGHOST,
             database=PGDATABASE,
@@ -22,9 +17,6 @@ class HerederosController:
             port=PGPORT
         )
 
-    # -----------------------------------------------------------
-    # Crear o eliminar tabla
-    # -----------------------------------------------------------
 
     @staticmethod
     def crear_tabla():
@@ -51,16 +43,8 @@ class HerederosController:
         conexion.commit()
         conexion.close()
 
-    # -----------------------------------------------------------
-    # Operaciones CRUD
-    # -----------------------------------------------------------
-
     @staticmethod
     def insertar(heredero: Heredero):
-        """
-        Inserta un heredero en la base de datos.
-        Si el id_heredero es None, se genera automáticamente (serial).
-        """
         conexion = HerederosController.conectar()
         cursor = conexion.cursor()
 
@@ -83,9 +67,6 @@ class HerederosController:
 
     @staticmethod
     def buscar(id_heredero):
-        """
-        Busca un heredero por su ID.
-        """
         conexion = HerederosController.conectar()
         cursor = conexion.cursor()
         cursor.execute("select * from herederos where id_heredero = %s;", (id_heredero,))
@@ -95,9 +76,6 @@ class HerederosController:
 
     @staticmethod
     def listar(limit=1000):
-        """
-        Lista todos los herederos hasta un límite especificado.
-        """
         conexion = HerederosController.conectar()
         cursor = conexion.cursor()
         cursor.execute("""

@@ -2,30 +2,24 @@ import psycopg2
 import sys
 import os
 
-# Agregar el directorio raíz al path para importar Secret_config
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from Secret_config import PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT
 from model.clientes import Cliente
-
-
-DB_CONFIG = {
-    "host": PGHOST,
-    "database": PGDATABASE,
-    "user": PGUSER,
-    "password": PGPASSWORD,
-    "port": PGPORT
-}
 
 class ClientesController:
 
     @staticmethod
     def conectar():
-        """Conecta a la base de datos PostgreSQL"""
-        return psycopg2.connect(**DB_CONFIG)
+        return psycopg2.connect(
+            host=PGHOST,
+            database=PGDATABASE,
+            user=PGUSER,
+            password=PGPASSWORD,
+            port=PGPORT
+        )
 
     @staticmethod
     def crear_tabla():
-        """Crea la tabla clientess si no existe"""
         conexion = ClientesController.conectar()
         cursor = conexion.cursor()
         cursor.execute("""
@@ -44,7 +38,6 @@ class ClientesController:
 
     @staticmethod
     def borrar_tabla():
-        """Elimina la tabla clientess"""
         conexion = ClientesController.conectar()
         cursor = conexion.cursor()
         cursor.execute("DROP TABLE IF EXISTS clientess;")
@@ -53,7 +46,6 @@ class ClientesController:
 
     @staticmethod
     def insertar(cliente: Cliente):
-        """Inserta un cliente en la base de datos"""
         conexion = ClientesController.conectar()
         cursor = conexion.cursor()
         try:
@@ -77,7 +69,6 @@ class ClientesController:
 
     @staticmethod
     def buscar(cedula):
-        """Busca un cliente por cédula"""
         conexion = ClientesController.conectar()
         cursor = conexion.cursor()
         cursor.execute("SELECT * FROM clientess WHERE cedula = %s;", (cedula,))

@@ -77,7 +77,6 @@ class HipotecasController:
     
     @staticmethod
     def buscar(id_hipoteca):
-        """Busca una hipoteca por ID"""
         conexion = HipotecasController.conectar()
         cursor = conexion.cursor()
         cursor.execute("SELECT * FROM hipotecas WHERE id_hipoteca = %s;", (id_hipoteca,))

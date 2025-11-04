@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+</head>
+
+<body>
+    
+
+    <!-- FORMULARIO DE CLIENTES -->
+    <form action="/buscar_cliente">
+        <h2>Buscar un Cliente</h2>
+        Escriba la cédula del cliente:
+        <input type="text" name="cliente_buscado" />
+        <button>Buscar</button>
+    </form>
+
+    <form action="/guardar_cliente" >
+        <h2>Insertar un Cliente</h2>
+    
+    <table>
+
+        <tr>
+           
+            <td>Cédula</td>
+            <td>
+<input type="text" name="cedula" />
+            </td>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td>
+                <input type="text" name="nombre" />
+            </td>
+        </tr>
+        <tr>
+            <td>Edad</td>
+            <td>
+                <input type="number" name="edad" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Dirección</td>
+            <td>
+<input type="text" name="direccion" />
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>Teléfono</td>
+            <td><input type="text" name="telefono" /></td>
+        </tr>
+        <tr>
+            <td>Correo</td>
+            <td><input type="email" name="correo" /></td>
+        </tr>
+
+    </table>
+
+    <input type="submit" />
+    </form>
+
+    <br><br>
+
+
+    <form action="/buscar_propiedad">
+        <h2>Buscar una Propiedad</h2>
+        Escriba el código de la propiedad:
+        <input type="text" name="propiedad_buscada" />
+        <button>Buscar</button>
+    </form>
+
+    <form action="/guardar_propiedad" >
+        <h2>Insertar una Propiedad</h2>
+    <table>
+        <tr>
+            <td>Código de Propiedad</td>
+            <td>
+<input type="text" name="codigo_propiedad" placeholder="Dejar vacío para auto-generar" />
+            </td>
+        </tr>
+        <tr>
+            <td>Cédula del Cliente</td>
+            <td>
+                <input type="text" name="cedula_cliente" />
+            </td>
+        </tr>
+        <tr>
+            <td>Valor de la Propiedad</td>
+            <td>
+                <input type="number" name="valor_propiedad" step="0.01" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Dirección</td>
+            <td>
+<input type="text" name="direccion" />
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>Área</td>
+            <td><input type="number" name="area" step="0.01" /></td>
+        </tr>
+        <tr>
+            <td>Tipo</td>
+            <td><input type="text" name="tipo" /></td>
+        </tr>
+
+    </table>
+
+    <input type="submit" />
+    </form>
+
+    <br><br>
+
+    <form action="/buscar_hipoteca">
+        <h2>Buscar una Hipoteca</h2>
+        Escriba el id de la hipoteca:
+        <input type="text" name="hipoteca_buscada" />
+        <button>Buscar</button>
+    </form>
+
+    <form action="/guardar_hipoteca" >
+        <h2>Insertar una Hipoteca</h2>
+    <table>
+        <tr>
+            <td>Código de Propiedad</td>
+            <td>
+<input type="text" name="codigo_propiedad" />
+            </td>
+        </tr>
+        <tr>
+            <td>Porcentaje de Préstamo</td>
+            <td>
+                <input type="number" name="porcentaje_prestamo" step="0.01" />
+            </td>
+        </tr>
+        <tr>
+            <td>Tasa Interés</td>
+            <td>
+                <input type="number" name="tasa_interes" step="0.01" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Plazo en Años</td>
+            <td>
+<input type="number" name="plazo_anios" />
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>Renta Mensual</td>
+            <td><input type="number" name="renta_mensual" step="0.01" /></td>
+        </tr>
+        <tr>
+            <td>Deuda Final</td>
+            <td><input type="number" name="deuda_final" step="0.01" /></td>
+        </tr>
+        <tr>
+            <td>Fecha de Inicio</td>
+            <td><input type="date" name="fecha_inicio" /></td>
+        </tr>
+        <tr>
+            <td>Fecha de Fin</td>
+            <td><input type="date" name="fecha_fin" /></td>
+        </tr>
+        <tr>
+            <td>Estado</td>
+            <td><input type="text" name="estado" /></td>
+        </tr>
+
+    </table>
+
+    <input type="submit" />
+    </form>
+
+    <br><br>
+
+
+    <form action="/buscar_heredero">
+        <h2>Buscar un Heredero</h2>
+        Escriba el id del heredero:
+        <input type="text" name="heredero_buscado" />
+        <button>Buscar</button>
+    </form>
+
+    <form action="/guardar_heredero" >
+        <h2>Insertar un Heredero</h2>
+    <table>
+        <tr>
+            <td>Cédula del Cliente</td>
+            <td>
+<input type="text" name="cedula_cliente" />
+            </td>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td>
+                <input type="text" name="nombre" />
+            </td>
+        </tr>
+        <tr>
+            <td>Relación</td>
+            <td>
+                <input type="text" name="relacion" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Teléfono</td>
+            <td>
+<input type="text" name="telefono" />
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>Correo</td>
+            <td><input type="email" name="correo" /></td>
+        </tr>
+
+    </table>
+
+    <input type="submit" />
+    </form>
+
+    <p>
+        Si es la primera vez que ejecuta esta aplicación, necesitará crear las tablas en la base de datos
+        haciendo <a href="/crear_tablas">click aqui</a>
+    </p>
+
+</body>
+
+</html>

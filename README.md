@@ -219,7 +219,7 @@ src/
 
 ## Entregas del Proyecto
 
-### Entrega 1 y 2:
+### Entrega 1, 2, 4 y 5:
 
 **Autores:**
 - Esteban Arias Salazar y Nicol Valeria Atehortua
@@ -299,3 +299,9 @@ pip install kivymd
 ```
 
 Esto abrirá la aplicación con la interfaz gráfica desarrollada en Kivy. Desde allí podrás ingresar los datos y simular la hipoteca inversa visualmente.
+
+### 6. Link de la pagina 
+```http
+https://reverse-mortgage-proyect.onrender.com/
+```
+

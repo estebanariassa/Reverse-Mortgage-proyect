@@ -1,3 +1,89 @@
+# Hipoteca Inversa – Guía de ejecución local
+
+Este proyecto es una aplicación Flask para gestionar clientes, propiedades, hipotecas y herederos. A continuación encontrarás los pasos para correrla en tu equipo y crear las tablas en una base de datos vacía.
+
+## Requisitos
+- Python 3.10+ (recomendado 3.11 o 3.12)
+- pip
+- PostgreSQL (local o un servicio en la nube)
+
+## 1) Clonar el proyecto
+```
+# PowerShell o Git Bash
+git clone <URL_DEL_REPO>
+cd Reverse-Mortgage-proyect
+```
+
+## 2) Crear y activar entorno virtual
+```
+# Windows (PowerShell)
+python -m venv .venv
+.\.venv\Scripts\activate
+
+# ó en Git Bash
+python -m venv .venv
+source .venv/Scripts/activate
+```
+
+## 3) Instalar dependencias
+```
+pip install -r requirements.txt
+```
+
+Si no tienes un requirements.txt, instala lo mínimo necesario:
+```
+pip install flask psycopg2-binary
+```
+
+## 4) Configurar la base de datos
+El proyecto usa variables en `src/Secret_config.py` para conectarse a PostgreSQL. Crea el archivo si no existe y define:
+
+```python
+# src/Secret_config.py
+PGHOST = "127.0.0.1"        # o el host de tu proveedor
+PGDATABASE = "hipoteca_inversa"
+PGUSER = "postgres"
+PGPASSWORD = "tu_password"
+PGPORT = 5432
+```
+
+- Crea la base de datos vacía si aún no existe (en tu PostgreSQL local):
+```
+# psql (opcional, si lo tienes en PATH)
+createdb hipoteca_inversa
+```
+
+## 5) Ejecutar la aplicación
+```
+python app.py
+```
+Abre el navegador en `http://127.0.0.1:5000/`.
+
+## 6) Crear tablas
+Con la aplicación levantada, visita:
+- `http://127.0.0.1:5000/crear_tablas`
+
+Si la conexión a la base de datos es correcta, verás el mensaje “Tablas creadas exitosamente”. Si aparece un error de conexión, revisa:
+- `src/Secret_config.py` (host, usuario, contraseña, puerto y nombre de la BD)
+- Que tu servidor de PostgreSQL esté en ejecución
+- Que el puerto 5432 esté permitido (firewall/VPN)
+
+## 7) Endpoints útiles
+- Menú: `http://127.0.0.1:5000/menu`
+- Buscar/insertar (formularios): `http://127.0.0.1:5000/buscar_datos`
+
+## 8) Pruebas (opcional)
+Si tienes tests en la carpeta `test/`:
+```
+# Asegúrate de activar el entorno virtual antes
+set PYTHONPATH=src  # PowerShell: $env:PYTHONPATH = "src"
+python -m unittest discover -s test -p "test_*.py"
+```
+
+## Notas
+- En desarrollo puedes usar PostgreSQL local para evitar latencias de la nube; para despliegue, ajusta `Secret_config.py` con las credenciales del servicio remoto.
+- Si cambias la contraseña en el servidor, actualízala también en `src/Secret_config.py`.
+
 # Sistema de Hipoteca Inversa
 
 Un sistema desarrollado para calcular y gestionar hipotecas inversas. Permite a los usuarios simular diferentes escenarios y administrar la información de clientes, propiedades e hipotecas.
